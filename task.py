@@ -32,7 +32,7 @@ if choice1 == "left":
                     'Type "swim" to swim across.\n').lower()
     if choice2 == "wait":
         choice3 = input("You arrive at the island unharmed. "
-                        "There is house with 3 doors. One red, "
+                        "There is house with 3 door. One red, "
                         "one yellow and one blue. "
                         "Which colour do you choose?\n").lower()
         if choice3 == "red":
