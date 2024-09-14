@@ -1,4 +1,6 @@
 import random
+from random import choices
+
 from hangman_words import word_list
 from hangman_art import stages, logo
 # TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
@@ -8,10 +10,9 @@ lives = 6
 print(logo)
 
 chosen_word = random.choice(word_list)
-
 placeholder = ""
-word_length = len(chosen_word)
-for position in range(word_length):
+
+for position in chosen_word:
     placeholder += "_"
 print("Word to guess: " + placeholder)
 
