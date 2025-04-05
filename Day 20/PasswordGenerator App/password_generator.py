@@ -3,21 +3,38 @@ import string
 
 
 def generate_password(length, use_uppercase, use_lowercase, use_numbers, use_specials):
-    characters = ''
 
+    uppercase_list= string.ascii_uppercase
+    lowercase_list =  string.ascii_lowercase
+    number_list = string.digits
+    special_list = string.punctuation
+
+    password_chars = []
     if use_uppercase:
-        characters += string.ascii_uppercase
+        password_chars.append(random.choice(uppercase_list))
     if use_lowercase:
-        characters += string.ascii_lowercase
+        password_chars.append(random.choice(lowercase_list))
     if use_numbers:
-        characters += string.digits
+        password_chars.append(random.choice(number_list))
     if use_specials:
-        characters += string.punctuation
+        password_chars.append(random.choice(special_list))
 
-    if not characters:
-        return "Error: No character set selected."
+    # Fill the rest
+    all_selected = []
+    if use_uppercase:
+        all_selected += uppercase_list
+    if use_lowercase:
+        all_selected += lowercase_list
+    if use_numbers:
+        all_selected += number_list
+    if use_specials:
+        all_selected += special_list
 
-    return ''.join(random.choice(characters) for _ in range(length))
+    remaining_length = length - len(password_chars)
+    password_chars += [random.choice(all_selected) for _ in range(remaining_length)]
+    random.shuffle(password_chars)
+
+    return ''.join(password_chars)
 
 
 def get_user_input():
